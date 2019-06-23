@@ -1,0 +1,9 @@
+.headerBlock {
+  grid-area: h;
+  background-color: green;
+  border-radius: 10px;
+}
+
+.headerBlock img {
+  width: 80px;
+}

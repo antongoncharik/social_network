@@ -1,0 +1,12 @@
+.dialogsMessagesBlock {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.dialogsBlock {
+  padding: 10px;
+}
+
+.messagesBlock {
+  padding: 10px;
+}

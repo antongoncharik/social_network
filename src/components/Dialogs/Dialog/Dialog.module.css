@@ -1,0 +1,8 @@
+.dialogBlock a{
+  color: white;
+  text-decoration: none;
+}
+
+.dialogBlock a.active {
+  color: black;
+}
