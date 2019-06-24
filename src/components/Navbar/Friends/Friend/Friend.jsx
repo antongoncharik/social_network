@@ -7,7 +7,9 @@ const Friend = (props) => {
       <div className={s.avaBlock}>
         <img src={props.ava}></img>
       </div>
-      {props.name}
+      <div className={s.nameBlock}>
+        {props.name}
+      </div>
     </div>
     )
 }
