@@ -1,3 +1,7 @@
 .messagesBlock {
   padding: 10px;
 }
+
+.messagesBlock .me {
+  color: green;
+}

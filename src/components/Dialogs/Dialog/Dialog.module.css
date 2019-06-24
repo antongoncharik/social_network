@@ -6,3 +6,7 @@
 .dialogBlock a.active {
   color: black;
 }
+
+.iconBlock img{
+  width: 25px;
+}

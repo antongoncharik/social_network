@@ -27,14 +27,17 @@ let state = {
     ],
     messages: [{
         id: 1,
+        me: 'me',
         message: 'Hi!'
       },
       {
         id: 2,
+        me: 'no',
         message: 'How are you?'
       },
       {
         id: 3,
+        me: 'me',
         message: 'What are you doing?'
       }
     ]
