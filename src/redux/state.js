@@ -19,10 +19,6 @@ let state = {
       {
         id: 5,
         name: 'Roma'
-      },
-      {
-        id: 5,
-        name: 'Roma'
       }
     ],
     messages: [{
