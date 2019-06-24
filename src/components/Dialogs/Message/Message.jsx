@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './Message.module.css';
+import s from './Message.css';
 
 const Message = (props) => {
     return (
-      <div className={`${s.messagesBlock} ${props.me}`}>
+      <div className={`messageBlock ${props.me}`}>
         {props.message}
       </div>)
 }

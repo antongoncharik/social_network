@@ -28,7 +28,7 @@ let state = {
       },
       {
         id: 2,
-        me: 'no',
+        me: 'not',
         message: 'How are you?'
       },
       {

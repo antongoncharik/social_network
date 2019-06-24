@@ -13,7 +13,7 @@ const Dialogs = (props) => {
         {dialogsElements}
       </div>
       <div className={s.messagesBlock}>
-        {messagesElements}
+          {messagesElements}
       </div>
     </div>
     )
