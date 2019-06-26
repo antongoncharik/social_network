@@ -78,4 +78,20 @@ let state = {
   }
 }
 
+export let addNewPost = (newPost) => {
+  state.profilePage.posts.push({
+    id: newPost.id,
+    post: newPost.textPost,
+    countLike: newPost.countLike
+  });
+}
+
+export let sendMessage = (message) => {
+  state.dialogsPage.messages.push({
+    id: message.id,
+    me: message.me,
+    message: message.message
+  });
+}
+
 export default state;

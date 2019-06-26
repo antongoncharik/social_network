@@ -3,8 +3,18 @@ import s from './Posts.module.css';
 import Post from './Post/Post';
 
 const Posts = (props) => {
-
   let postsElements = props.posts.map(p => <Post message={p.post} countLike={p.countLike}/>);
+
+  let refNewPostElement = React.createRef();
+
+  let addNewPost = () => {
+    let textPost = refNewPostElement.current.value;
+    props.addNewPost({
+      textPost: textPost,
+      id: 10,
+      countLike: 0
+    });
+  }
 
   return (
     <div className={s.postsBlock}>
@@ -12,10 +22,10 @@ const Posts = (props) => {
       <div>
         New post
           <div>
-            <textarea></textarea>
+            <textarea ref={refNewPostElement}></textarea>
           </div>
           <div>
-            <button>Add post</button>
+            <button onClick={addNewPost}>Add post</button>
           </div>
         <div>
           {postsElements}
