@@ -1,3 +1,5 @@
+import {renderEntireTree} from './../render';
+
 let state = {
   dialogsPage: {
     dialogs: [{
@@ -59,7 +61,8 @@ let state = {
         post: 'I am fine!!',
         countLike: 11
       }
-    ]
+    ],
+    currentTextPost: ''
   },
   sidebar: {
     friends: [{
@@ -78,12 +81,14 @@ let state = {
   }
 }
 
-export let addNewPost = (newPost) => {
+export let addNewPost = () => {
   state.profilePage.posts.push({
-    id: newPost.id,
-    post: newPost.textPost,
-    countLike: newPost.countLike
+    id: 1,
+    post: state.profilePage.currentTextPost,
+    countLike: 0
   });
+  state.profilePage.currentTextPost = '';
+  renderEntireTree(state);
 }
 
 export let sendMessage = (message) => {
@@ -92,6 +97,12 @@ export let sendMessage = (message) => {
     me: message.me,
     message: message.message
   });
+  renderEntireTree(state);
+}
+
+export let updateTextPost = (newTextPost) => {
+  state.profilePage.currentTextPost = newTextPost;
+  renderEntireTree(state);
 }
 
 export default state;
