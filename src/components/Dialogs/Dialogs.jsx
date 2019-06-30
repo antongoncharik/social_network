@@ -11,7 +11,7 @@ const Dialogs = (props) => {
 
   let sendMessage = () => {
     let textMessage = refNewMessage.current.value;
-    props.sendMessage({
+    props.store.sendMessage({
       id: 3,
       me: 'me',
       message: textMessage
