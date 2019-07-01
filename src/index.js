@@ -3,16 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from './redux/state';
+import {store} from './redux/state';
 import {BrowserRouter} from 'react-router-dom';
 
 export let renderEntireTree = (state) => {
-  ReactDOM.render(
+    ReactDOM.render(
     <BrowserRouter>
-      <App state={state}
-        addNewPost={store.addNewPost.bind(store)}
-        sendMessage={store.sendMessage.bind(store)}
-        updateTextPost={store.updateTextPost.bind(store)}/>
+      <App state={state} dispatch={store.dispatch.bind(store)}/>
     </BrowserRouter>, document.getElementById('root'));
 }
 
