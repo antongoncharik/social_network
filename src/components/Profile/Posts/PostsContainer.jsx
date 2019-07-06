@@ -4,11 +4,14 @@ import {
   addNewPostCreator,
   updateTextPostCreator
 } from './../../../redux/profile_reducer';
-import {connect} from 'react-redux';
+import {
+  connect
+} from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.profilePage.posts
+    posts: state.profilePage.posts,
+    currentTextPost: state.profilePage.currentTextPost
   }
 }
 const mapDispatchToProps = (dispatch) => {
