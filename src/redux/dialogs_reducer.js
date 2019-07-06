@@ -44,17 +44,22 @@ let initialState = {
 
 export const dialogsReduser = (state = initialState, action) => {
   switch (action.type) {
-    case SEND_MESSAGE:
-      state.messages.push({
-        id: action.id,
-        me: action.me,
-        message: action.message
+    case SEND_MESSAGE:{
+    let newState = {...state};
+    newState.messages = [...state.messages];
+    newState.messages.push({
+      id: action.id,
+      me: action.me,
+      message: action.message
       });
-      state.currentTextMessage = '';
-      break;
-    case UPDATE_TEXT_MESSAGE:
-      state.currentTextMessage = action.textMessage;
-      break;
+    newState.currentTextMessage = '';
+    return newState;
+    break;}
+    case UPDATE_TEXT_MESSAGE:{
+      let newState = {...state};
+      newState.currentTextMessage = action.textMessage;
+      return newState;
+      break;}
   }
   return state;
 }

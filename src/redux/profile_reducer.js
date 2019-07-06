@@ -43,17 +43,22 @@ let initialState = {
 
 export const profileReduser = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_NEW_POST:
-      state.posts.push({
+    case ADD_NEW_POST:{
+      let newState = {...state};
+      newState.posts = [...state.posts];
+      newState.posts.push({
         id: 1,
         post: state.currentTextPost,
         countLike: 0
       });
-      state.currentTextPost = '';
-      break;
-    case UPDATE_TEXT_POST:
-      state.currentTextPost = action.textPost;
-      break;
+      newState.currentTextPost = '';
+      return newState;
+      break;}
+    case UPDATE_TEXT_POST:{
+      let newState = {...state};
+      newState.currentTextPost = action.textPost;
+      return newState;
+      break;}
   }
   return state;
 }
