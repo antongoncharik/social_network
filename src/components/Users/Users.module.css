@@ -1,0 +1,13 @@
+/*.dialogsMessagesBlock {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}*/
+.userBlock {
+  padding-left: 15px;
+}
+
+.avatarBlock img {
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+}

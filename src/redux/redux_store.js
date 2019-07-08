@@ -11,10 +11,14 @@ import {
 import {
   sidebarReduser
 } from './sidebar_reducer';
+import {
+  usersReducer
+} from './users_reducer';
 
 let reducers = combineReducers({
   profilePage: profileReduser,
   dialogsPage: dialogsReduser,
-  sidebarPage: sidebarReduser
+  sidebarPage: sidebarReduser,
+  usersPage: usersReducer
 });
 export let store = createStore(reducers);
