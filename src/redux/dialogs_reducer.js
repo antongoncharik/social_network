@@ -64,6 +64,7 @@ export const dialogsReduser = (state = initialState, action) => {
   }
   return state;
 }
+
 export const sendMessageCreator = (objParam) => {
   return {
     type: SEND_MESSAGE,
@@ -72,6 +73,7 @@ export const sendMessageCreator = (objParam) => {
     message: objParam.message
   };
 }
+
 export const updateTextMessageCreator = (textMessage) => {
   return {
     type: UPDATE_TEXT_MESSAGE,

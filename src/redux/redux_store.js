@@ -21,4 +21,5 @@ let reducers = combineReducers({
   sidebarPage: sidebarReduser,
   usersPage: usersReducer
 });
+
 export let store = createStore(reducers);

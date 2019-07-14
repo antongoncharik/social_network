@@ -1,3 +1,7 @@
 .profileInfoBlock {
   padding: 10px;
 }
+
+.logoBlock img {
+  height: 150px;
+}
