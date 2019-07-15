@@ -1,7 +1,12 @@
 .profileInfoBlock {
-  padding: 10px;
+    padding: 10px;
 }
 
 .logoBlock img {
-  height: 150px;
+    height: 150px;
+}
+
+.avaBlock img {
+    width: 250px;
+    height: 250px;
 }

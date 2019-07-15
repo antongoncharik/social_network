@@ -12,19 +12,19 @@ import UsersContainer from './components/Users/UsersContainer';
 import {Route} from 'react-router-dom';
 
 const App = (props) => {
-  return (
-      <div className='app-wrapper'>
-        <Header />
-        <Navbar sidebar={props.store.getState().sidebarPage}/>
-        <div className='app-wrapper-content'>
-          <Route path='/profile' render={() => <ProfileContainer store={props.store}/>}/>
-          <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/>}/>
-          <Route path='/news' render={() => <News />}/>
-          <Route path='/music' render={() => <Music />}/>
-          <Route path='/find_users' render={() => <UsersContainer store={props.store}/>}/>
-          <Route path='/settings' render={() => <Settings />}/>
-        </div>
-      </div>)
+    return (
+        <div className='app-wrapper'>
+            <Header/>
+            <Navbar sidebar={props.store.getState().sidebarPage}/>
+            <div className='app-wrapper-content'>
+                <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store}/>}/>
+                <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/>}/>
+                <Route path='/news' render={() => <News/>}/>
+                <Route path='/music' render={() => <Music/>}/>
+                <Route path='/find_users' render={() => <UsersContainer store={props.store}/>}/>
+                <Route path='/settings' render={() => <Settings/>}/>
+            </div>
+        </div>)
 }
 
 export default App;

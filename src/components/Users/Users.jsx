@@ -4,29 +4,36 @@ import anonymousAvatar from './../../resource/img/anonymous_avatar.jpg';
 import {NavLink} from 'react-router-dom';
 
 const Users = (props) => {
-  return <div>
-      <div className={s.pageBlock}>
-        {props.arrCountPage.map(p => <span className={p === props.currentPage ? s.selectedPageBlock : ''}
-          onClick={(e) => {props.onChangePage(p)}}>{p}</span>)}
-      </div>
-  {
-    props.users.map(user =>
-      <div key={user.id} className={s.userBlock}>
-        <div className={s.avatarBlock}>
-          <NavLink to={'/profile/' + user.id}><img src={user.photos.small === null ? anonymousAvatar : user.photos.small}></img></NavLink>
+    return <div>
+        <div className={s.pageBlock}>
+            {props.arrCountPage.map(p => <span className={p === props.currentPage ? s.selectedPageBlock : ''}
+                                               onClick={(e) => {
+                                                   props.onChangePage(p)
+                                               }}>{p}</span>)}
         </div>
-        <div>{user.name}</div>
-        <div>{'user.age'}</div>
-        <div>{'user.status'}</div>
-        <div>{'user.location.country'}</div>
-        <div>{'user.location.city'}</div>
-        <div>{user.followed
-            ? <button onClick={() => {props.unfollow(user.id)}}>Unfollow</button>
-            : <button onClick={() => {props.follow(user.id)}}>Follow</button>}
-        </div>
-     </div>)
-   }
-  </div>
+        {
+            props.users.map(user =>
+                <div key={user.id} className={s.userBlock}>
+                    <div className={s.avatarBlock}>
+                        <NavLink to={'/profile/' + user.id}>
+                            <img src={user.photos.small === null ? anonymousAvatar : user.photos.small}></img></NavLink>
+                    </div>
+                    <div>{user.name}</div>
+                    <div>{'user.age'}</div>
+                    <div>{'user.status'}</div>
+                    <div>{'user.location.country'}</div>
+                    <div>{'user.location.city'}</div>
+                    <div>{user.followed
+                        ? <button onClick={() => {
+                            props.unfollow(user.id)
+                        }}>Unfollow</button>
+                        : <button onClick={() => {
+                            props.follow(user.id)
+                        }}>Follow</button>}
+                    </div>
+                </div>)
+        }
+    </div>
 }
 
 export default Users;
