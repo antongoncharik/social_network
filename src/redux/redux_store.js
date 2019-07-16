@@ -1,25 +1,29 @@
 import {
-  createStore,
-  combineReducers
+    createStore,
+    combineReducers
 } from 'redux';
 import {
-  profileReduser
+    profileReduser
 } from './profile_reducer';
 import {
-  dialogsReduser
+    dialogsReduser
 } from './dialogs_reducer';
 import {
-  sidebarReduser
+    sidebarReduser
 } from './sidebar_reducer';
 import {
-  usersReducer
+    usersReducer
 } from './users_reducer';
+import {
+    authReducer
+} from './auth_reducer';
 
 let reducers = combineReducers({
-  profilePage: profileReduser,
-  dialogsPage: dialogsReduser,
-  sidebarPage: sidebarReduser,
-  usersPage: usersReducer
+    profilePage: profileReduser,
+    dialogsPage: dialogsReduser,
+    sidebarPage: sidebarReduser,
+    usersPage: usersReducer,
+    auth: authReducer
 });
 
 export let store = createStore(reducers);
