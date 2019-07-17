@@ -17,7 +17,8 @@ import Preloader from './../Preloader/Preloader';
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.setFetchingData(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+            {withCredentials: true})
             .then(response => {
                 this.props.setFetchingData(false);
                 this.props.setUsers(response.data.items);
@@ -28,7 +29,8 @@ class UsersContainer extends React.Component {
     onChangePage = (p) => {
         this.props.setFetchingData(true);
         this.props.setCurrentPage(p);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`,
+            {withCredentials: true})
             .then(response => {
                 this.props.setFetchingData(false);
                 this.props.setUsers(response.data.items);
