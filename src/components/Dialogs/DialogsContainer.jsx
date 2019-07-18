@@ -28,6 +28,9 @@ const mapDispatchToProps = (dispatch) => {
     changeMessage: (text) => {
       dispatch(updateTextMessageCreator(text));
     }
+
+
+
   }
 }
 

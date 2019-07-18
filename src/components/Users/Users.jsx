@@ -3,6 +3,7 @@ import s from './Users.module.css';
 import anonymousAvatar from './../../resource/img/anonymous_avatar.jpg';
 import {NavLink} from 'react-router-dom';
 import * as axios from "axios";
+import {usersAPI} from "../../Api";
 
 const Users = (props) => {
     return <div>
@@ -25,30 +26,18 @@ const Users = (props) => {
                     <div>{'user.location.country'}</div>
                     <div>{'user.location.city'}</div>
                     <div>{user.followed
-                        ? <button onClick={() => {
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                                {
-                                    withCredentials: true,
-                                    headers: {
-                                        "API-KEY": "38b40b63-763d-46d7-82f0-267d51786bf6"
-                                    }
-                                })
-                                .then(response => {
-                                    if (response.data.resultCode === 0) {
+                        ? <button disabled={true} onClick={() => {
+                            usersAPI.unfollowUser(user.id)
+                                .then(data => {
+                                    if (data.resultCode === 0) {
                                         props.unfollow(user.id);
                                     }
                                 });
                         }}>Unfollow</button>
-                        : <button onClick={() => {
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {},
-                                {
-                                    withCredentials: true,
-                                    headers: {
-                                        "API-KEY": "38b40b63-763d-46d7-82f0-267d51786bf6"
-                                    }
-                                })
-                                .then(response => {
-                                    if (response.data.resultCode === 0) {
+                        : <button disabled={true} onClick={() => {
+                            usersAPI.followUser(user.id)
+                                .then(data => {
+                                    if (data.resultCode === 0) {
                                         props.follow(user.id);
                                     }
                                 });
