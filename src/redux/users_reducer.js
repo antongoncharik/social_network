@@ -4,13 +4,15 @@ const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_COUNT_USERS = 'SET_TOTAL_COUNT_USERS';
 const TOGGLE_FETCHING_DATA = 'TOGGLE_FETCHING_DATA';
+const SUBSCRIBE_USERS = 'SUBSCRIBE_USERS';
 
 let initialState = {
     users: [],
     pageSize: 5,
     currentPage: 1,
     totalCountUsers: 0,
-    isFetchingData: false
+    isFetchingData: false,
+    subscribedUsers: []
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -67,6 +69,15 @@ export const usersReducer = (state = initialState, action) => {
                 isFetchingData: action.fetchingData
             }
             break;
+        case SUBSCRIBE_USERS:
+            return {
+                ...state,
+                subscribedUsers:
+                    action.isSubscribeUser
+                        ? [...state.subscribedUsers, action.userId]
+                        : state.subscribedUsers.filter(id => id != action.userId)
+            }
+            break;
         default:
             return state;
     }
@@ -111,5 +122,13 @@ export const setFetchingData = (fetchingData) => {
     return {
         type: TOGGLE_FETCHING_DATA,
         fetchingData: fetchingData
+    }
+}
+
+export const subscribeUsers = (isSubscribeUser, userId) => {
+    return {
+        type: SUBSCRIBE_USERS,
+        isSubscribeUser: isSubscribeUser,
+        userId: userId
     }
 }
