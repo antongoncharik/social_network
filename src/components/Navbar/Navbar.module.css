@@ -1,15 +1,15 @@
 .navBlock {
-  grid-area: n;
-  background-color: red;
-  padding: 20px;
-  border-radius: 10px;
+    grid-area: n;
+    background-color: red;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .navLinkBlock a {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 
 .navLinkBlock a.activeLinkBlock {
-  color: black;
+    color: black;
 }

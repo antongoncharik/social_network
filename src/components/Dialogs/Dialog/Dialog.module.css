@@ -1,12 +1,12 @@
-.dialogBlock a{
-  color: white;
-  text-decoration: none;
+.dialogBlock a {
+    color: white;
+    text-decoration: none;
 }
 
 .dialogBlock a.active {
-  color: black;
+    color: black;
 }
 
-.iconBlock img{
-  width: 50px;
+.iconBlock img {
+    width: 50px;
 }

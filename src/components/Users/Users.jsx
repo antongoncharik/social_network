@@ -2,8 +2,6 @@ import React from 'react';
 import s from './Users.module.css';
 import anonymousAvatar from './../../resource/img/anonymous_avatar.jpg';
 import {NavLink} from 'react-router-dom';
-import {usersAPI} from "../../Api";
-import {subscribeUsers} from "../../redux/users_reducer";
 
 const Users = (props) => {
     return <div>
@@ -27,24 +25,10 @@ const Users = (props) => {
                     <div>{'user.location.city'}</div>
                     <div>{user.followed
                         ? <button disabled={props.subscribedUsers.some(id => id === user.id)} onClick={() => {
-                            props.subscribeUsers(true, user.id);
-                            usersAPI.unfollowUser(user.id)
-                                .then(response => {
-                                    props.subscribeUsers(false, user.id);
-                                    if (response.data.resultCode === 0) {
-                                        props.unfollow(user.id);
-                                    }
-                                });
+                            props.followUnfollowUser(user.id, false);
                         }}>Unfollow</button>
                         : <button disabled={props.subscribedUsers.some(id => id === user.id)} onClick={() => {
-                            props.subscribeUsers(true, user.id);
-                            usersAPI.followUser(user.id)
-                                .then(response => {
-                                    props.subscribeUsers(false, user.id);
-                                    if (response.data.resultCode === 0) {
-                                        props.follow(user.id);
-                                    }
-                                });
+                            props.followUnfollowUser(user.id, true);
                         }}>Follow</button>}
                     </div>
                 </div>)

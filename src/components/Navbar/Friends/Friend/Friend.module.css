@@ -1,19 +1,19 @@
 .friendBlock {
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
 }
 
 .avaBlock {
-  text-align: center;
+    text-align: center;
 }
 
-.avaBlock img{
-  width: 40px;
+.avaBlock img {
+    width: 40px;
 }
 
 .nameBlock {
-  text-align: center;
+    text-align: center;
 }

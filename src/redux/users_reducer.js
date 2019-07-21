@@ -1,3 +1,5 @@
+import {usersAPI} from '../Api';
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -130,5 +132,38 @@ export const subscribeUsers = (isSubscribeUser, userId) => {
         type: SUBSCRIBE_USERS,
         isSubscribeUser: isSubscribeUser,
         userId: userId
+    }
+}
+
+
+export const getUsers = (currentPage, pageSize, firstSetUsers) => {
+    return (dispatch) => {
+        dispatch(setFetchingData(true));
+        dispatch(setCurrentPage(currentPage));
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(response => {
+                dispatch(setFetchingData(false));
+                dispatch(setUsers(response.data.items));
+                if (firstSetUsers) {
+                    dispatch(setTotalCountUsers(response.data.totalCount));
+                }
+            })
+    }
+}
+
+export const followUnfollowUser = (userId, isFollowUser) => {
+    return (dispatch) => {
+        dispatch(subscribeUsers(true, userId));
+        usersAPI.unfollowUser(userId)
+            .then(response => {
+                dispatch(subscribeUsers(false, userId));
+                if (response.data.resultCode === 0) {
+                    if (isFollowUser) {
+                        dispatch(follow(userId));
+                    } else {
+                        dispatch(unfollow(userId));
+                    }
+                }
+            })
     }
 }

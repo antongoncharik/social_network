@@ -1,10 +1,10 @@
 .messageBlock {
-  margin-top: 10px;
-  padding: 5px;
-  border-radius: 15px;
-  background: #d9ebf7;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 15px;
+    background: #d9ebf7;
 }
 
 .messageBlock.me {
-  text-align: right;
+    text-align: right;
 }

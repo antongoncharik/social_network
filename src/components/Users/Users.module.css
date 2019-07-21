@@ -1,21 +1,17 @@
-/*.dialogsMessagesBlock {
-  display: grid;
-  grid-template-columns: 2fr 10fr;
-}*/
 .userBlock {
-  padding-left: 15px;
+    padding-left: 15px;
 }
 
 .avatarBlock img {
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
 }
 
 .pageBlock {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .selectedPageBlock {
-  font-weight: bold;
+    font-weight: bold;
 }

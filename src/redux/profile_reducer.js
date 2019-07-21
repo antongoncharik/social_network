@@ -1,3 +1,5 @@
+import {profileAPI} from '../Api';
+
 const ADD_NEW_POST = 'ADD_NEW_POST';
 const UPDATE_TEXT_POST = 'UPDATE_TEXT_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -104,5 +106,17 @@ export const setFetchingData = (fetchingData) => {
     return {
         type: TOGGLE_FETCHING_DATA,
         fetchingData: fetchingData
+    }
+}
+
+
+export const setProfile = (userId) => {
+    return (dispatch) => {
+        dispatch(setFetchingData(true));
+        profileAPI.getProfileUser(userId)
+            .then(response => {
+                dispatch(setFetchingData(false));
+                dispatch(setUserProfile(response.data));
+            });
     }
 }

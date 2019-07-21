@@ -1,37 +1,19 @@
 import React from 'react';
 import Users from './Users';
 import {
-    follow,
-    unfollow,
-    setUsers,
-    setCurrentPage,
-    setTotalCountUsers,
-    setFetchingData,
-    subscribeUsers
+    getUsers,
+    followUnfollowUser
 } from './../../redux/users_reducer';
 import {connect} from 'react-redux';
 import Preloader from './../Preloader/Preloader';
-import {usersAPI} from '../../Api';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.setFetchingData(true);
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(response => {
-                this.props.setFetchingData(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalCountUsers(response.data.totalCount);
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize, true);
     }
 
     onChangePage = (p) => {
-        this.props.setFetchingData(true);
-        this.props.setCurrentPage(p);
-        usersAPI.getUsers(p, this.props.pageSize)
-            .then(response => {
-                this.props.setFetchingData(false);
-                this.props.setUsers(response.data.items);
-            });
+        this.props.getUsers(p, this.props.pageSize, false);
     }
 
     render() {
@@ -46,12 +28,10 @@ class UsersContainer extends React.Component {
         } else {
             return <Users onChangePage={this.onChangePage}
                           currentPage={this.props.currentPage}
-                          unfollow={this.props.unfollow}
-                          follow={this.props.follow}
                           arrCountPage={arrCountPage}
                           users={this.props.users}
-                          subscribeUsers={this.props.subscribeUsers}
-                          subscribedUsers={this.props.subscribedUsers}/>
+                          subscribedUsers={this.props.subscribedUsers}
+                          followUnfollowUser={this.props.followUnfollowUser}/>
         }
     }
 }
@@ -68,11 +48,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setUsers,
-    setCurrentPage,
-    setTotalCountUsers,
-    setFetchingData,
-    subscribeUsers
+    getUsers,
+    followUnfollowUser
 })(UsersContainer);
