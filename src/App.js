@@ -10,6 +10,7 @@ import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 import {Route} from 'react-router-dom';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
 
 const App = (props) => {
     return (
@@ -23,6 +24,7 @@ const App = (props) => {
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/find_users' render={() => <UsersContainer store={props.store}/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>
+                <Route path='/login' render={() => <Login/>}/>
             </div>
         </div>)
 }

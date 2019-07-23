@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
     return {
         dialogs: state.dialogsPage.dialogs,
         messages: state.dialogsPage.messages,
-        currentTextMessage: state.dialogsPage.currentTextMessage
+        currentTextMessage: state.dialogsPage.currentTextMessage,
+        isAuth: state.auth.isAuth
     }
 }
 const mapDispatchToProps = (dispatch) => {
