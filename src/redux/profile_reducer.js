@@ -110,7 +110,7 @@ export const setFetchingData = (fetchingData) => {
 }
 
 
-export const setProfile = (userId) => {
+export const setProfileUser = (userId) => {
     return (dispatch) => {
         dispatch(setFetchingData(true));
         profileAPI.getProfileUser(userId)
