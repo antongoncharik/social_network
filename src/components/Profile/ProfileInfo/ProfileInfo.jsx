@@ -13,7 +13,8 @@ const ProfileInfo = (props) => {
             <div className={s.logoBlock}>
                 <img src='https://kipmu.ru/wp-content/uploads/svgry.jpg'></img>
             </div>
-            <ProfileStatus status={props.status}/>
+            <ProfileStatus status={props.status}
+                           updateStatus={props.updateStatus}/>
             <div className={s.profileInfoBlock}>
                 <div>{props.userProfile.fullName}</div>
                 <div className={s.avaBlock}><img src={props.userProfile.photos.large}></img></div>
