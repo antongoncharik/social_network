@@ -2,14 +2,25 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
-import {Redirect} from 'react-router-dom';
+import {Field, reduxForm} from "redux-form";
+
+const DialogsForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field name={'newTextDialog'} component={'input'}></Field>
+                <button>Send</button>
+            </div>
+        </form>
+    )
+}
+
+const DialogsReduxForm = reduxForm({form: 'textDialog'})(DialogsForm);
 
 const Dialogs = (props) => {
-    let refNewMessage = React.createRef();
-    let dialogsElements = props.dialogs.map(d => <Dialog id={d.id} dialog={d.name}/>);
-    let messagesElements = props.messages.map(m => <Message message={m.message} me={m.me}/>);
-    let sendMessage = () => props.sendMessage(refNewMessage.current.value);
-    let changeMessage = () => props.changeMessage(refNewMessage.current.value);
+    let dialogsElements = props.dialogs.map(d => <Dialog key={d.id} id={d.id} dialog={d.name}/>);
+    let messagesElements = props.messages.map(m => <Message key={m.id} message={m.message} me={m.me}/>);
+    let sendMessage = (formData) => props.sendMessage(formData.newTextDialog);
 
     return (
         <div className={s.dialogsMessagesBlock}>
@@ -19,11 +30,7 @@ const Dialogs = (props) => {
             <div className={s.messagesBlock}>
                 {messagesElements}
             </div>
-            <div>
-        <textarea ref={refNewMessage} onChange={changeMessage}
-                  value={props.currentTextMessage}></textarea>
-                <button onClick={sendMessage}>Send</button>
-            </div>
+            <DialogsReduxForm onSubmit={sendMessage}/>
         </div>
     )
 }

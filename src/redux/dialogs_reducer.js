@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
-const UPDATE_TEXT_MESSAGE = 'UPDATE_TEXT_MESSAGE';
 
 let initialState = {
     dialogs: [{
@@ -55,12 +54,6 @@ export const dialogsReduser = (state = initialState, action) => {
                 currentTextMessage: ''
             }
             break;
-        case UPDATE_TEXT_MESSAGE:
-            return {
-                ...state,
-                currentTextMessage: action.textMessage
-            }
-            break;
     }
     return state;
 }
@@ -71,12 +64,5 @@ export const sendMessageCreator = (objParam) => {
         id: objParam.id,
         me: objParam.me,
         message: objParam.message
-    };
-}
-
-export const updateTextMessageCreator = (textMessage) => {
-    return {
-        type: UPDATE_TEXT_MESSAGE,
-        textMessage: textMessage
     };
 }

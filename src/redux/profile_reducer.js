@@ -1,7 +1,6 @@
 import {profileAPI} from '../Api';
 
 const ADD_NEW_POST = 'ADD_NEW_POST';
-const UPDATE_TEXT_POST = 'UPDATE_TEXT_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const TOGGLE_FETCHING_DATA = 'TOGGLE_FETCHING_DATA';
 const SET_STATUS = 'SET_STATUS';
@@ -57,16 +56,10 @@ export const profileReduser = (state = initialState, action) => {
                 ...state,
                 posts: [...state.posts, {
                     id: 1,
-                    post: state.currentTextPost,
+                    post: action.newTextPost,
                     countLike: 0
                 }],
                 currentTextPost: ''
-            }
-            break;
-        case UPDATE_TEXT_POST:
-            return {
-                ...state,
-                currentTextPost: action.textPost
             }
             break;
         case SET_USER_PROFILE:
@@ -92,16 +85,10 @@ export const profileReduser = (state = initialState, action) => {
 }
 
 
-export const addNewPost = () => {
+export const addNewPost = (newTextPost) => {
     return {
-        type: ADD_NEW_POST
-    };
-}
-
-export const updateTextPost = (textPost) => {
-    return {
-        type: UPDATE_TEXT_POST,
-        textPost: textPost
+        type: ADD_NEW_POST,
+        newTextPost
     };
 }
 

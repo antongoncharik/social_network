@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom';
 const Users = (props) => {
     return <div>
         <div className={s.pageBlock}>
-            {props.arrCountPage.map(p => <span className={p === props.currentPage ? s.selectedPageBlock : ''}
+            {props.arrCountPage.map(p => <span key={p} className={p === props.currentPage ? s.selectedPageBlock : ''}
                                                onClick={(e) => {
                                                    props.onChangePage(p)
                                                }}>{p}</span>)}

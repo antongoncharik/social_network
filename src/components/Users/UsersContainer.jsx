@@ -1,9 +1,6 @@
 import React from 'react';
 import Users from './Users';
-import {
-    getUsers,
-    followUnfollowUser
-} from './../../redux/users_reducer';
+import {getUsers, followUnfollowUser} from './../../redux/users_reducer';
 import {connect} from 'react-redux';
 import Preloader from './../Preloader/Preloader';
 

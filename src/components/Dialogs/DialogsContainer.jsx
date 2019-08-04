@@ -1,11 +1,6 @@
 import Dialogs from './Dialogs';
-import {
-    sendMessageCreator,
-    updateTextMessageCreator
-} from './../../redux/dialogs_reducer';
-import {
-    connect
-} from 'react-redux';
+import {sendMessageCreator} from './../../redux/dialogs_reducer';
+import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => {
     return {
@@ -24,9 +19,6 @@ const mapDispatchToProps = (dispatch) => {
                 message: text
             });
             dispatch(action);
-        },
-        changeMessage: (text) => {
-            dispatch(updateTextMessageCreator(text));
         }
     }
 }
