@@ -2,12 +2,17 @@ import React from 'react';
 import s from './Posts.module.css';
 import Post from './Post/Post';
 import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../Validators/validators";
+
+const maxLength300 = maxLengthCreator(300);
 
 const PostsForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field name={'newTextPost'} component={'input'}></Field>
+                <Field name={'newTextPost'}
+                       component={'input'}
+                       validate={[required, maxLength300]}></Field>
             </div>
             <div>
                 <button>Add post</button>
