@@ -4,6 +4,8 @@
 
 .logoBlock img {
     height: 150px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .avaBlock img {

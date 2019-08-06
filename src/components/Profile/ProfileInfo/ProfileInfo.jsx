@@ -11,7 +11,7 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div className={s.logoBlock}>
-                <img src='https://kipmu.ru/wp-content/uploads/svgry.jpg'></img>
+                <img src='https://global.razor.com/ru/wp-content/uploads/sites/9/2015/10/product-hub-bg-ripstik-1200x270.jpg'></img>
             </div>
             <ProfileStatus status={props.status}
                            updateStatus={props.updateStatus}/>
