@@ -27,9 +27,7 @@ export const authReducer = (state = initialState, action) => {
 
 export const setAuthData = (authData) => {
     let auth = false;
-    if (authData.id) {
-        auth = true;
-    }
+    if (authData.id) auth = true;
 
     return {
         type: SET_AUTH_DATA,
@@ -45,8 +43,19 @@ export const login = (email, password, rememberMe) => {
         authAPI.login(email, password, rememberMe)
             .then(response => {
                 if (response.data.resultCode === 0) {
-                    //dispatch(setStatus(status));
-                    alert('login');
+                    dispatch(setAuthData({
+                        type: SET_AUTH_DATA,
+                        id: response.data.data.userId,
+                        login: null,
+                        email: null,
+                        isAuth: true
+                    }));
+                    authAPI.auth()
+                        .then(response => {
+                            if (response.data.resultCode === 0) {
+                                setAuthData(response.data.data);
+                            }
+                        });
                 }
             });
     }

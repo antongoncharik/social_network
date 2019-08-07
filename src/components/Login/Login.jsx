@@ -2,6 +2,8 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {maxLengthCreator, minLengthCreator, required} from "../../common/Validators/validators";
 import {Input} from "../../common/FormsControls/FormsControls";
+import {connect} from "react-redux";
+import {login} from "../../redux/auth_reducer";
 
 const maxLength30 = maxLengthCreator(30);
 const maxLength16 = maxLengthCreator(16);
@@ -21,6 +23,7 @@ const LoginForm = (props) => {
                 <Field placeholder='Password'
                        name={'password'}
                        component={Input}
+                       type={'password'}
                        validate={[required, maxLength16, minLength6]}/>
             </div>
             <div>
@@ -39,7 +42,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-
+        props.login(formData.login, formData.password, formData.rememberMe);
     }
 
     return (
@@ -50,4 +53,4 @@ const Login = (props) => {
     )
 }
 
-export default Login;
+export default connect(null, {login})(Login);
