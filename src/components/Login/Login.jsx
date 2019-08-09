@@ -4,6 +4,7 @@ import {maxLengthCreator, minLengthCreator, required} from "../../common/Validat
 import {Input} from "../../common/FormsControls/FormsControls";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth_reducer";
+import s from './Login.module.css';
 
 const maxLength30 = maxLengthCreator(30);
 const maxLength16 = maxLengthCreator(16);
@@ -34,6 +35,9 @@ const LoginForm = (props) => {
             <div>
                 <button>Login</button>
             </div>
+            {props.error && <span className={s.commonError}>
+                {props.error}
+            </span>}
         </form>
     )
 }
