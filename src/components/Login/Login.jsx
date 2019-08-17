@@ -5,6 +5,7 @@ import {Input} from "../../common/FormsControls/FormsControls";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth_reducer";
 import s from './Login.module.css';
+import {Redirect} from "react-router-dom";
 
 const maxLength30 = maxLengthCreator(30);
 const maxLength16 = maxLengthCreator(16);
@@ -49,6 +50,10 @@ const Login = (props) => {
         props.login(formData.login, formData.password, formData.rememberMe);
     }
 
+    if (props.isAuth) {
+       return <Redirect to={'/profile'}/>
+    }
+
     return (
         <div>
             <h1>LOGIN</h1>
@@ -57,4 +62,10 @@ const Login = (props) => {
     )
 }
 
-export default connect(null, {login})(Login);
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default connect(mapStateToProps, {login})(Login);

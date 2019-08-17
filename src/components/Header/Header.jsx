@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Header.module.css';
+import logo from '../../common/resource/img/logo.jpg';
 
 const Header = (props) => {
     const logout = () => {
@@ -9,7 +10,9 @@ const Header = (props) => {
     return (
         <header className={s.headerBlock}>
             <img
-                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEfqgnIfB09UoLZO2hU92G3sLC9_EhIVMygSxZ0Mga8pnwxfMAxw'></img>
+                src={logo}>
+
+            </img>
             <div className={s.loginBlock}>
                 {props.isAuth ? <button onClick={logout}>{props.login} logout</button> : 'unauthorized'}
             </div>

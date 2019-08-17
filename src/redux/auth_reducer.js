@@ -54,7 +54,7 @@ export const login = (email, password, rememberMe) => {
                     authAPI.auth()
                         .then(response => {
                             if (response.data.resultCode === 0) {
-                                setAuthData(response.data.data);
+                                dispatch(setAuthData(response.data.data));
                             }
                         });
                 } else {
