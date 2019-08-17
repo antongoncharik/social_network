@@ -10,7 +10,7 @@ import {getStatus, updateStatus} from '../../redux/profile_reducer';
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
-        if (!userId) userId = 10;
+        if (!userId) userId = this.props.id;
         this.props.setProfileUser(userId);
         this.props.getStatus(userId);
     }
@@ -30,7 +30,8 @@ const mapStateToProps = (state) => {
         userProfile: state.profilePage.userProfile,
         isFetchingData: state.profilePage.isFetchingData,
         status: state.profilePage.status,
-        auth: state.auth.isAuth
+        auth: state.auth.isAuth,
+        id: state.auth.id
     }
 }
 

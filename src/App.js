@@ -14,6 +14,7 @@ import {compose} from "redux/es/redux";
 import Preloader from "./components/Preloader/Preloader";
 import {Route, withRouter} from "react-router-dom";
 import {initializedApp} from "./redux/app_reducer";
+import Footer from "./components/Footer/Footer";
 
 class App extends React.Component {
     componentDidMount() {
@@ -35,6 +36,7 @@ class App extends React.Component {
                     <Route path='/settings' render={() => <Settings/>}/>
                     <Route path='/login' render={() => <Login/>}/>
                 </div>
+                <Footer/>
             </div>)
     }
 }

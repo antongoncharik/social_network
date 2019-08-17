@@ -14,7 +14,7 @@ const Header = (props) => {
 
             </img>
             <div className={s.loginBlock}>
-                {props.isAuth ? <button onClick={logout}>{props.login} logout</button> : 'unauthorized'}
+                {props.isAuth ? <div onClick={logout}>{props.login}</div> : 'unauthorized'}
             </div>
         </header>
     )

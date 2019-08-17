@@ -5,11 +5,12 @@
 }
 
 .headerBlock img {
-    /*width: 100px;*/
     height: 50px;
 }
 
 .loginBlock {
     float: right;
     color: white;
+    border-bottom: white 1px solid;
+    cursor: pointer;
 }
