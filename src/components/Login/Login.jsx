@@ -12,9 +12,9 @@ const maxLength16 = maxLengthCreator(16);
 const minLength10 = minLengthCreator(10);
 const minLength6 = minLengthCreator(6);
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field placeholder='Login'
                        name={'login'}
@@ -36,8 +36,8 @@ const LoginForm = (props) => {
             <div>
                 <button>Login</button>
             </div>
-            {props.error && <span className={s.commonError}>
-                {props.error}
+            {error && <span className={s.commonError}>
+                {error}
             </span>}
         </form>
     )
@@ -45,13 +45,13 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
     const onSubmit = (formData) => {
-        props.login(formData.login, formData.password, formData.rememberMe);
+        login(formData.login, formData.password, formData.rememberMe);
     }
 
-    if (props.isAuth) {
-       return <Redirect to={'/profile'}/>
+    if (isAuth) {
+        return <Redirect to={'/profile'}/>
     }
 
     return (

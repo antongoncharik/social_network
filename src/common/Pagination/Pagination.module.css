@@ -1,0 +1,7 @@
+.pageBlock {
+    cursor: pointer;
+}
+
+.selectedPageBlock {
+    font-weight: bold;
+}

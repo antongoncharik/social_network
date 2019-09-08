@@ -3,7 +3,7 @@ import s from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
 import Friends from './Friends/Friends';
 
-const Navbar = (props) => {
+const NavbarPanel = (props) => {
     return (
         <nav className={s.navBlock}>
             <div className={s.navLinkBlock}>
@@ -30,4 +30,4 @@ const Navbar = (props) => {
         </nav>)
 }
 
-export default Navbar;
+export default NavbarPanel;

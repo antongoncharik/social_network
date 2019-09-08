@@ -84,49 +84,42 @@ export const usersReducer = (state = initialState, action) => {
             return state;
     }
 }
-
 export const follow = (userID) => {
     return {
         type: FOLLOW,
         userID: userID
     }
 }
-
 export const unfollow = (userID) => {
     return {
         type: UNFOLLOW,
         userID: userID
     }
 }
-
 export const setUsers = (users) => {
     return {
         type: SET_USERS,
         users: users
     }
 }
-
 export const setCurrentPage = (page) => {
     return {
         type: SET_CURRENT_PAGE,
         page: page
     }
 }
-
 export const setTotalCountUsers = (count) => {
     return {
         type: SET_TOTAL_COUNT_USERS,
         count: count
     }
 }
-
 export const setFetchingData = (fetchingData) => {
     return {
         type: TOGGLE_FETCHING_DATA,
         fetchingData: fetchingData
     }
 }
-
 export const subscribeUsers = (isSubscribeUser, userId) => {
     return {
         type: SUBSCRIBE_USERS,
@@ -135,35 +128,29 @@ export const subscribeUsers = (isSubscribeUser, userId) => {
     }
 }
 
-
 export const getUsers = (currentPage, pageSize, firstSetUsers) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setFetchingData(true));
         dispatch(setCurrentPage(currentPage));
-        usersAPI.getUsers(currentPage, pageSize)
-            .then(response => {
-                dispatch(setFetchingData(false));
-                dispatch(setUsers(response.data.items));
-                if (firstSetUsers) {
-                    dispatch(setTotalCountUsers(response.data.totalCount));
-                }
-            })
+        let response = await usersAPI.getUsers(currentPage, pageSize);
+        dispatch(setFetchingData(false));
+        dispatch(setUsers(response.data.items));
+        if (firstSetUsers) {
+            dispatch(setTotalCountUsers(response.data.totalCount));
+        }
     }
 }
-
 export const followUnfollowUser = (userId, isFollowUser) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(subscribeUsers(true, userId));
-        usersAPI.unfollowUser(userId)
-            .then(response => {
-                dispatch(subscribeUsers(false, userId));
-                if (response.data.resultCode === 0) {
-                    if (isFollowUser) {
-                        dispatch(follow(userId));
-                    } else {
-                        dispatch(unfollow(userId));
-                    }
-                }
-            })
+        let response = await usersAPI.unfollowUser(userId);
+        dispatch(subscribeUsers(false, userId));
+        if (response.data.resultCode === 0) {
+            if (isFollowUser) {
+                dispatch(follow(userId));
+            } else {
+                dispatch(unfollow(userId));
+            }
+        }
     }
 }

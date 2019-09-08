@@ -8,9 +8,9 @@ import {Textarea} from "../../common/FormsControls/FormsControls";
 
 const maxLength300 = maxLengthCreator(300);
 
-const DialogsForm = (props) => {
+const DialogsForm = ({handleSubmit}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field name={'newTextDialog'}
                        component={Textarea}
@@ -23,10 +23,10 @@ const DialogsForm = (props) => {
 
 const DialogsReduxForm = reduxForm({form: 'textDialog'})(DialogsForm);
 
-const Dialogs = (props) => {
-    let dialogsElements = props.dialogs.map(d => <Dialog key={d.id} id={d.id} dialog={d.name}/>);
-    let messagesElements = props.messages.map(m => <Message key={m.id} message={m.message} me={m.me}/>);
-    let sendMessage = (formData) => props.sendMessage(formData.newTextDialog);
+const Dialogs = ({dialogs, messages, sendMessage}) => {
+    let dialogsElements = dialogs.map(d => <Dialog key={d.id} id={d.id} dialog={d.name}/>);
+    let messagesElements = messages.map(m => <Message key={m.id} message={m.message} me={m.me}/>);
+    let sendMessageButton = (formData) => sendMessage(formData.newTextDialog);
 
     return (
         <div className={s.dialogsMessagesBlock}>
@@ -36,7 +36,7 @@ const Dialogs = (props) => {
             <div className={s.messagesBlock}>
                 {messagesElements}
             </div>
-            <DialogsReduxForm onSubmit={sendMessage}/>
+            <DialogsReduxForm onSubmit={sendMessageButton}/>
         </div>
     )
 }

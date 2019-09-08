@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from './../../Preloader/Preloader';
-import ProfileStatusHooks from "./ProfileIStatusHooks";
+import ProfileStatusWithHook from "./ProfileIStatusWithHook";
 
 const ProfileInfo = (props) => {
     if (!props.userProfile) {
@@ -14,8 +14,8 @@ const ProfileInfo = (props) => {
                 <img
                     src='https://global.razor.com/ru/wp-content/uploads/sites/9/2015/10/product-hub-bg-ripstik-1200x270.jpg'></img>
             </div>
-            <ProfileStatusHooks status={props.status}
-                                updateStatus={props.updateStatus}/>
+            <ProfileStatusWithHook status={props.status}
+                                    updateStatus={props.updateStatus}/>
             <div className={s.profileInfoBlock}>
                 <div className={s.faceBlock}>
                     <div>{props.userProfile.fullName}</div>

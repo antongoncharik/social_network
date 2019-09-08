@@ -40,38 +40,31 @@ export const setAuthData = (authData) => {
 }
 
 export const login = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authAPI.login(email, password, rememberMe)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setAuthData({
-                        type: SET_AUTH_DATA,
-                        id: response.data.data.userId,
-                        login: null,
-                        email: null,
-                        isAuth: true
-                    }));
-                    authAPI.auth()
-                        .then(response => {
-                            if (response.data.resultCode === 0) {
-                                dispatch(setAuthData(response.data.data));
-                            }
-                        });
-                } else {
-                    let messageError = response.data.messages.length ? response.data.messages[0] : 'Some error';
-                    dispatch(stopSubmit('login', {_error: messageError}));
-                }
-            });
+    return async (dispatch) => {
+        let response = await authAPI.login(email, password, rememberMe);
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthData({
+                type: SET_AUTH_DATA,
+                id: response.data.data.userId,
+                login: null,
+                email: null,
+                isAuth: true
+            }));
+            response = await authAPI.auth();
+            if (response.data.resultCode === 0) {
+                dispatch(setAuthData(response.data.data));
+            }
+        } else {
+            let messageError = response.data.messages.length ? response.data.messages[0] : 'Some error';
+            dispatch(stopSubmit('login', {_error: messageError}));
+        }
     }
 }
-
 export const logout = () => {
-    return (dispatch) => {
-        authAPI.logout()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setAuthData({type: SET_AUTH_DATA, id: null, login: null, email: null, isAuth: false}));
-                }
-            });
+    return async (dispatch) => {
+        let response = await authAPI.logout();
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthData({type: SET_AUTH_DATA, id: null, login: null, email: null, isAuth: false}));
+        }
     }
 }

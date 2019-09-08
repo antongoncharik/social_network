@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
@@ -15,6 +14,7 @@ import Preloader from "./components/Preloader/Preloader";
 import {Route, withRouter} from "react-router-dom";
 import {initializedApp} from "./redux/app_reducer";
 import Footer from "./components/Footer/Footer";
+import NavbarPanel from "./components/Navbar/Navbar";
 
 class App extends React.Component {
     componentDidMount() {
@@ -26,7 +26,7 @@ class App extends React.Component {
         return (
             <div className='app-wrapper'>
                 <HeaderContainer/>
-                <Navbar sidebar={this.props.store.getState().sidebarPage}/>
+                <NavbarPanel sidebar={this.props.store.getState().sidebarPage}/>
                 <div className='app-wrapper-content'>
                     <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                     <Route path='/dialogs' render={() => <DialogsContainer/>}/>

@@ -58,11 +58,13 @@ export const dialogsReduser = (state = initialState, action) => {
     return state;
 }
 
-export const sendMessageCreator = (objParam) => {
-    return {
-        type: SEND_MESSAGE,
-        id: objParam.id,
-        me: objParam.me,
-        message: objParam.message
-    };
+export const sendMessage = (message) => {
+    return (dispatch) => {
+        dispatch({
+            type: SEND_MESSAGE,
+            id: 3,
+            me: 'me',
+            message: message
+        });
+    }
 }
