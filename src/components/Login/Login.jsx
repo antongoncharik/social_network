@@ -1,7 +1,7 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {maxLengthCreator, minLengthCreator, required} from "../../common/Validators/validators";
-import {Input} from "../../common/FormsControls/FormsControls";
+import {Input, createField} from "../../common/FormsControls/FormsControls";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth_reducer";
 import s from './Login.module.css';
@@ -15,24 +15,12 @@ const minLength6 = minLengthCreator(6);
 const LoginForm = ({handleSubmit, error}) => {
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <Field placeholder='Login'
-                       name={'login'}
-                       component={Input}
-                       validate={[required, maxLength30, minLength10]}/>
-            </div>
-            <div>
-                <Field placeholder='Password'
-                       name={'password'}
-                       component={Input}
-                       type={'password'}
-                       validate={[required, maxLength16, minLength6]}/>
-            </div>
-            <div>
-                <Field name={'rememberMe'}
-                       component={Input}
-                       type='checkbox'/>remember me
-            </div>
+            {createField('Login', 'login', Input,
+                [required, maxLength30, minLength10], '')}
+            {createField('Password', 'password', Input,
+                [required, maxLength16, minLength6], '', {type: 'password'})}
+            {createField(null, 'rememberMe', Input,
+                null, 'remember me', {type: 'checkbox'})}
             <div>
                 <button>Login</button>
             </div>
