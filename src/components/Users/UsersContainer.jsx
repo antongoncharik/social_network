@@ -24,6 +24,7 @@ class UsersContainer extends React.Component {
         for (let i = 1; i <= countPage; i++) {
             arrCountPage.push(i);
         }
+        let countPagePart = Math.ceil(countPage / this.props.pageSize);
 
         if (this.props.isFetchingData) {
             return <Preloader/>
@@ -31,6 +32,8 @@ class UsersContainer extends React.Component {
             return <Users onChangePage={this.onChangePage}
                           currentPage={this.props.currentPage}
                           arrCountPage={arrCountPage}
+                          countPagePart={countPagePart}
+                          pageSize={this.props.pageSize}
                           users={this.props.users}
                           subscribedUsers={this.props.subscribedUsers}
                           followUnfollowUser={this.props.followUnfollowUser}/>

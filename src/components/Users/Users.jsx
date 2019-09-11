@@ -7,6 +7,8 @@ const Users = (props) => {
         <div>
             <Pagination currentPage={props.currentPage}
                         arrCountPage={props.arrCountPage}
+                        countPagePart={props.countPagePart}
+                        partSize={props.pageSize}
                         onChangePage={props.onChangePage}/>
             <User users={props.users}
                   followUnfollowUser={props.followUnfollowUser}
