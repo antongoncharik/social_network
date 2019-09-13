@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import MainApp from './App';
 import * as serviceWorker from './serviceWorker';
-import {store} from './redux/redux_store';
-import {BrowserRouter} from 'react-router-dom';
-import {Provider} from 'react-redux';
 
 ReactDOM.render(<MainApp/>, document.getElementById('root'));
 
