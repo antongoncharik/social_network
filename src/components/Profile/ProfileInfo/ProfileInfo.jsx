@@ -9,15 +9,15 @@ const ProfileInfo = (props) => {
     }
 
     return (
-        <div>
+        <div className={s.commonProfile}>
             <div className={s.logoBlock}>
                 <img
                     src='https://global.razor.com/ru/wp-content/uploads/sites/9/2015/10/product-hub-bg-ripstik-1200x270.jpg'></img>
             </div>
-            <ProfileStatusWithHook status={props.status}
-                                    updateStatus={props.updateStatus}/>
             <div className={s.profileInfoBlock}>
                 <div className={s.faceBlock}>
+                    <ProfileStatusWithHook status={props.status}
+                                           updateStatus={props.updateStatus}/>
                     <div>{props.userProfile.fullName}</div>
                     <div className={s.avaBlock}><img src={props.userProfile.photos.large}></img></div>
                 </div>

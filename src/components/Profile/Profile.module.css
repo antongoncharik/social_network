@@ -1,0 +1,9 @@
+.ProfileBlock {
+    display: grid;
+    grid-row-gap: 15px;
+}
+
+.PostsContainerBlock {
+    background-color: #d5f5ed;
+    border-radius: 15px;
+}

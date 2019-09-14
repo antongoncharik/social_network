@@ -13,7 +13,7 @@
 
 .app-wrapper-content {
     grid-area: c;
-    background-color: #d5f5ed;
+    /*background-color: #d5f5ed;*/
     border-radius: 15px;
 }
 

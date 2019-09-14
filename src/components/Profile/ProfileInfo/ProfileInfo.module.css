@@ -1,14 +1,19 @@
+.commonProfile {
+    display: grid;
+    grid-row-gap: 15px;
+}
+
 .profileInfoBlock {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 10px;
+    grid-column-gap: 15px;
 }
 
 .logoBlock img {
     height: 150px;
     width: 100%;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-radius: 15px;
+    /*margin-bottom: 15px;*/
 }
 
 .avaBlock img {
@@ -16,14 +21,14 @@
     height: 250px;
 }
 
-.statusBlock {
-    margin-left: 10px;
+.faceBlock {
+    background-color: #d5f5ed;
+    border-radius: 15px;
+    padding: 10px;
 }
 
 .aboutUserBlock {
-
-}
-
-.faceBlock {
-
+    background-color: #d5f5ed;
+    border-radius: 15px;
+    padding: 10px;
 }

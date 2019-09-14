@@ -7,7 +7,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import {connect, Provider} from "react-redux";
 import Preloader from "./components/Preloader/Preloader";
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, withRouter} from "react-router-dom";
 import {initializedApp} from "./redux/app_reducer";
 import Footer from "./components/Footer/Footer";
 import NavbarPanel from "./components/Navbar/Navbar";
@@ -58,11 +58,11 @@ const AppContainer = compose(
 
 const MainApp = (props) => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 

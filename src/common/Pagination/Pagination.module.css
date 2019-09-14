@@ -1,8 +1,45 @@
 .pageBlock {
+    display: flex;
     cursor: pointer;
+}
 
+.cellPage {
+    padding: 2px;
+    font-size: 16px;
 }
 
 .selectedPageBlock {
+    padding: 2px;
+    font-size: 16px;
     font-weight: bold;
+    text-decoration: underline;
 }
+
+.prevArrow img {
+    margin-left: 4px;
+    margin-right: 4px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    opacity: 0.1;
+    transition: opacity 0.5s;
+}
+
+.prevArrow img:hover {
+    opacity: 1
+}
+
+.nextArrow img {
+    margin-left: 4px;
+    margin-right: 4px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    opacity: 0.1;
+    transition: opacity 0.5s;
+}
+
+.nextArrow img:hover {
+    opacity: 1;
+}
+

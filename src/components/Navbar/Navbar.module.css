@@ -12,4 +12,5 @@
 
 .navLinkBlock a.activeLinkBlock {
     color: black;
+    font-weight: bold;
 }

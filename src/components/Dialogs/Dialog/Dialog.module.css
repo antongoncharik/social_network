@@ -1,10 +1,11 @@
 .dialogBlock a {
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
 .dialogBlock a.active {
     color: black;
+    font-weight: bold;
 }
 
 .iconBlock img {

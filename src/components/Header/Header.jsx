@@ -9,10 +9,7 @@ const Header = ({logout, isAuth, login}) => {
 
     return (
         <header className={s.headerBlock}>
-            <img
-                src={logo}>
-
-            </img>
+            <img src={logo}></img>
             <div className={s.loginBlock}>
                 {isAuth ? <div onClick={logoutButton}>{login}</div> : 'unauthorized'}
             </div>

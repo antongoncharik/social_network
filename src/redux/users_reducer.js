@@ -10,7 +10,7 @@ const SUBSCRIBE_USERS = 'SUBSCRIBE_USERS';
 
 let initialState = {
     users: [],
-    pageSize: 5,
+    pageSize: 10,
     currentPage: 1,
     totalCountUsers: 0,
     isFetchingData: false,
