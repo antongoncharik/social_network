@@ -17,3 +17,7 @@
     margin-right: 10px;
     margin-top: 5px;
 }
+
+.loginBlock:active {
+    transform: translateY(2px);
+}

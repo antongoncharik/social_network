@@ -10,6 +10,7 @@
 }
 
 .btn {
+    border: black 2px solid;
     cursor: pointer;
     width: 30px;
     border-radius: 20px;
@@ -24,6 +25,7 @@
 .btn:hover {
     color: #ffffff;
     background: #fc0000;
+    border: #fc0000 2px solid;
 }
 
 .btn:active {
