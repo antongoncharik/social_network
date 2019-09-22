@@ -11,11 +11,12 @@ const Post = (props) => {
         <div className={s.postBlock}>
             <div>
                 <img
-                    src={props.userProfile ? props.userProfile.photos.small : anonymousAvatar}></img>
+                    src={props.userProfile ? props.userProfile.photos.small : anonymousAvatar}>
+                </img>
                 {props.message}
                 <div>
+                    <div className={s.btn} onChange={changeLike}></div>
                     <div>
-                        <div className={s.btn} onChange={changeLike}>like</div>
                         {` ${props.countLike}`}
                     </div>
                 </div>

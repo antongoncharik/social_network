@@ -9,25 +9,66 @@
     border-radius: 40px;
 }
 
+/*.btn {*/
+/*    border: black 2px solid;*/
+/*    cursor: pointer;*/
+/*    width: 30px;*/
+/*    border-radius: 20px;*/
+/*    font-family: Arial;*/
+/*    color: black;*/
+/*    font-size: 15px;*/
+/*    background: #ffffff;*/
+/*    padding: 5px 5px 5px 5px;*/
+
+/*}*/
+
+/*.btn:hover {*/
+/*    color: #ffffff;*/
+/*    background: #fc0000;*/
+/*    border: #fc0000 2px solid;*/
+/*}*/
+
+/*.btn:active {*/
+/*    transform: translateY(2px);*/
+/*}*/
+
 .btn {
-    border: black 2px solid;
-    cursor: pointer;
-    width: 30px;
-    border-radius: 20px;
-    font-family: Arial;
-    color: black;
-    font-size: 15px;
-    background: #ffffff;
-    padding: 5px 5px 5px 5px;
-
+    width: 15px;
+    height: 25px;
+    background-color: grey;
+    box-shadow: -1px 0px 2px #444;
+    /* Скругляем верхние углы */
+    -webkit-border-radius: 50px 50px 0 0;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    /* Определяем угол наклона */
+    -webkit-transform: rotate(315deg);
+    -moz-transform: rotate(315deg);
+    -ms-transform: rotate(315deg);
+    -o-transform: rotate(315deg);
+    transform: rotate(315deg);
 }
 
-.btn:hover {
-    color: #ffffff;
-    background: #fc0000;
-    border: #fc0000 2px solid;
+/* Формируем правую часть */
+.btn:before {
+    position: absolute;
+    width: 25px;
+    height: 15px;
+    left: 0;
+    bottom: 0;
+    content: "";
+    background-color: grey;
+    box-shadow: 0px 3px 3px #444444;
+    -webkit-border-radius: 50px 50px 0 0;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 0 50px 50px 0;
 }
 
-.btn:active {
-    transform: translateY(2px);
+/* Убираем тень при наведении */
+.btn:hover:before, .btn:hover {
+    box-shadow: none;
+}
+
+.btn:active, .btn:active:before {
+    background-color: red;
 }

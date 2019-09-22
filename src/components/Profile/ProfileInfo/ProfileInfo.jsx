@@ -51,4 +51,12 @@ const ProfileInfo = (props) => {
         </div>)
 }
 
+const Contact = ({titelContact, valueContact}) => {
+    return (
+        <div>
+           <b>{`${titelContact}: `}</b>valueContact
+        </div>
+    )
+}
+
 export default ProfileInfo;
