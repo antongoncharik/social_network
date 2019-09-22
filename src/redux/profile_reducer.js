@@ -4,6 +4,7 @@ const ADD_NEW_POST = 'ADD_NEW_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const TOGGLE_FETCHING_DATA = 'TOGGLE_FETCHING_DATA';
 const SET_STATUS = 'SET_STATUS';
+const SET_PHOTO = 'SET_PHOTO';
 
 let initialState = {
     posts: [{
@@ -79,6 +80,12 @@ export const profileReduser = (state = initialState, action) => {
                 status: action.status
             }
             break;
+        case SET_PHOTO:
+            return {
+                ...state,
+                userProfile: {...state.userProfile, photos: action.photos}
+            }
+            break;
     }
     return state;
 }
@@ -107,6 +114,12 @@ export const setStatus = (status) => {
         status: status
     }
 }
+export const setPhoto = (photos) => {
+    return {
+        type: SET_PHOTO,
+        photos: photos
+    }
+}
 
 export const setProfileUser = (userId) => {
     return async (dispatch) => {
@@ -127,6 +140,14 @@ export const updateStatus = (status) => {
         let response = await profileAPI.updateStatus(status);
         if (response.data.resultCode === 0) {
             dispatch(setStatus(status));
+        }
+    }
+}
+export const updatePhoto = (photo) => {
+    return async (dispatch) => {
+        let response = await profileAPI.updatePhoto(photo);
+        if (response.data.resultCode === 0) {
+            dispatch(setPhoto(response.data.data.photos));
         }
     }
 }

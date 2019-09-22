@@ -25,7 +25,10 @@ const PostsForm = (props) => {
 const PostsReduxForm = reduxForm({form: 'textPost'})(PostsForm);
 
 const Posts = (props) => {
-    let postsElements = props.posts.map((p, index) => <Post key={index} message={p.post} countLike={p.countLike}/>);
+    let postsElements = props.posts.map((p, index) => <Post key={index}
+                                                            message={p.post}
+                                                            countLike={p.countLike}
+                                                            userProfile={props.userProfile}/>);
     let addNewPost = (formData) => {
         props.addNewPost(formData.newTextPost);
     }

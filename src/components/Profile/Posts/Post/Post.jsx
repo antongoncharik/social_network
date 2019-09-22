@@ -1,17 +1,22 @@
 import React from 'react';
 import s from './Post.module.css';
+import anonymousAvatar from '../../../../common/resource/img/anonymous_avatar.jpg';
 
 const Post = (props) => {
+    let changeLike = () => {
+
+    }
+
     return (
         <div className={s.postBlock}>
             <div>
                 <img
-                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJIMM2jHO1YeqAGk2BsiwGV3QR91zTvWuEMMUVI34sVby66vcs-A'></img>
+                    src={props.userProfile ? props.userProfile.photos.small : anonymousAvatar}></img>
                 {props.message}
                 <div>
                     <div>
-                        <button>like</button>
-                        {props.countLike}
+                        <div className={s.btn} onChange={changeLike}>like</div>
+                        {` ${props.countLike}`}
                     </div>
                 </div>
             </div>
