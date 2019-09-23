@@ -5,6 +5,7 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const TOGGLE_FETCHING_DATA = 'TOGGLE_FETCHING_DATA';
 const SET_STATUS = 'SET_STATUS';
 const SET_PHOTO = 'SET_PHOTO';
+const TOGGLE_EDIT_MODE = 'TOGGLE_EDIT_MODE';
 
 let initialState = {
     posts: [{
@@ -46,7 +47,8 @@ let initialState = {
     },
     userProfile: null,
     isFetchingData: false,
-    status: ''
+    status: '',
+    isEditMode: false
 }
 
 export const profileReduser = (state = initialState, action) => {
@@ -86,6 +88,12 @@ export const profileReduser = (state = initialState, action) => {
                 userProfile: {...state.userProfile, photos: action.photos}
             }
             break;
+        case TOGGLE_EDIT_MODE:
+            return {
+                ...state,
+                isEditMode: action.isEditMode
+            }
+            break;
     }
     return state;
 }
@@ -120,6 +128,12 @@ export const setPhoto = (photos) => {
         photos: photos
     }
 }
+export const setEditMode = (isEditMode) => {
+    return {
+        type: TOGGLE_EDIT_MODE,
+        isEditMode: isEditMode
+    }
+}
 
 export const setProfileUser = (userId) => {
     return async (dispatch) => {
@@ -149,5 +163,10 @@ export const updatePhoto = (photo) => {
         if (response.data.resultCode === 0) {
             dispatch(setPhoto(response.data.data.photos));
         }
+    }
+}
+export const toggleEditMode = (isEditMode) => {
+    return (dispatch) => {
+        dispatch(setEditMode(isEditMode));
     }
 }

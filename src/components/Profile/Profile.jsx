@@ -3,7 +3,7 @@ import PostsContainer from './Posts/PostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import s from './Profile.module.css';
 
-const Profile = ({userProfile, status, updateStatus, store, updatePhoto, isOwner}) => {
+const Profile = ({userProfile, status, updateStatus, store, updatePhoto, isOwner, toggleEditMode, isEditMode}) => {
     return (
         <div className={s.ProfileBlock}>
             <div className={s.ProfileInfoBlock}>
@@ -11,7 +11,9 @@ const Profile = ({userProfile, status, updateStatus, store, updatePhoto, isOwner
                              status={status}
                              updateStatus={updateStatus}
                              updatePhoto={updatePhoto}
-                             isOwner={isOwner}/>
+                             isOwner={isOwner}
+                             toggleEditMode={toggleEditMode}
+                             isEditMode={isEditMode}/>
             </div>
             <div className={s.PostsContainerBlock}>
                 <PostsContainer store={store}/>

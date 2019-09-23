@@ -1,4 +1,4 @@
-.commonProfile {
+.profileBlock {
     display: grid;
     grid-row-gap: 10px;
 }
@@ -20,16 +20,20 @@
     height: 250px;
 }
 
-.faceBlock {
+.profileLeftBlock {
     background-color: #d5f5ed;
     border-radius: 15px;
     padding: 10px;
 }
 
-.aboutUserBlock {
+.profileRightBlock {
     background-color: #d5f5ed;
     border-radius: 15px;
     padding: 10px;
+}
+
+.contacts {
+    padding-left: 10px;
 }
 
 .btn {
