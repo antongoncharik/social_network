@@ -1,4 +1,5 @@
 import {profileAPI} from '../Api';
+import {stopSubmit} from "redux-form";
 
 const ADD_NEW_POST = 'ADD_NEW_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -138,20 +139,20 @@ export const setEditMode = (isEditMode) => {
 export const setProfileUser = (userId) => {
     return async (dispatch) => {
         dispatch(setFetchingData(true));
-        let response = await profileAPI.getProfileUser(userId);
+        const response = await profileAPI.getProfileUser(userId);
         dispatch(setFetchingData(false));
         dispatch(setUserProfile(response.data));
     }
 }
 export const getStatus = (userId) => {
     return async (dispatch) => {
-        let response = await profileAPI.getStatus(userId);
+        const response = await profileAPI.getStatus(userId);
         dispatch(setStatus(response.data));
     }
 }
 export const updateStatus = (status) => {
     return async (dispatch) => {
-        let response = await profileAPI.updateStatus(status);
+        const response = await profileAPI.updateStatus(status);
         if (response.data.resultCode === 0) {
             dispatch(setStatus(status));
         }
@@ -159,7 +160,7 @@ export const updateStatus = (status) => {
 }
 export const updatePhoto = (photo) => {
     return async (dispatch) => {
-        let response = await profileAPI.updatePhoto(photo);
+        const response = await profileAPI.updatePhoto(photo);
         if (response.data.resultCode === 0) {
             dispatch(setPhoto(response.data.data.photos));
         }
@@ -168,5 +169,17 @@ export const updatePhoto = (photo) => {
 export const toggleEditMode = (isEditMode) => {
     return (dispatch) => {
         dispatch(setEditMode(isEditMode));
+    }
+}
+export const updateProfile = (profile) => {
+    return async (dispatch, getState) => {
+        const userId = getState().auth.id;
+        const response = await profileAPI.updateProfile(profile);
+        if (response.data.resultCode === 0) {
+            dispatch(setProfileUser(userId));
+            dispatch(toggleEditMode(false));
+        } else {
+            dispatch(stopSubmit('profileForm', {'contacts': {'facebook': response.data.messages[0]}}));
+        }
     }
 }

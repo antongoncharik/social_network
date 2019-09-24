@@ -22,7 +22,7 @@ const ProfileInfo = (props) => {
     }
 
     const onSubmit = (formData) => {
-        console.log(formData);
+        props.updateProfile(formData);
     };
 
     return (
@@ -38,7 +38,9 @@ const ProfileInfo = (props) => {
                                   updateStatus={props.updateStatus}
                                   choosePhoto={choosePhoto}
                                   toggleEditMode={toggleEditMode}/>
-                {props.isEditMode && <ProfileEditFormRedux onSubmit={onSubmit}/> ||
+                {props.isEditMode && <ProfileEditFormRedux onSubmit={onSubmit}
+                                                           userProfile={props.userProfile}
+                                                           initialValues={props.userProfile}/> ||
                 <ProfileRightBlock userProfile={props.userProfile}/>}
 
             </div>
@@ -49,7 +51,7 @@ const ProfileLeftBlock = (props) => {
         <div className={s.profileLeftBlock}>
             <ProfileStatusWithHook status={props.status}
                                    updateStatus={props.updateStatus}/>
-            <div>{props.userProfile.fullName}</div>
+            <div><b>{props.userProfile.fullName}</b></div>
             <div className={s.avaBlock}>
                 <img src={props.userProfile.photos.large || anonymousAvatar}></img>
             </div>
@@ -63,9 +65,11 @@ const ProfileRightBlock = (props) => {
         <div className={s.profileRightBlock}>
             <div><b>about me:</b></div>
             <div>{props.userProfile.aboutMe}</div>
-            <div><b>looking for a job:{props.userProfile.lookingForAJob}</b></div>
-            <div><b>lookingForAJobDescription:</b></div>
-            <div>{props.userProfile.lookingForAJobDescription}</div>
+            <div><b>looking for a job: </b>{props.userProfile.lookingForAJob && 'yes' || 'no'}</div>
+            {props.userProfile.lookingForAJob && <div>
+                <div><b>lookingForAJobDescription:</b></div>
+                <div>{props.userProfile.lookingForAJobDescription}</div>
+            </div>}
             <div><b>Contacts:</b></div>
             <div className={s.contacts}>
                 <div>{Object.keys(props.userProfile.contacts).map(key => {
