@@ -12,7 +12,7 @@ const maxLength16 = maxLengthCreator(16);
 const minLength10 = minLengthCreator(10);
 const minLength6 = minLengthCreator(6);
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
             {createField('Login', 'login', Input,
@@ -24,18 +24,18 @@ const LoginForm = ({handleSubmit, error}) => {
             <div>
                 <button>Login</button>
             </div>
-            {error && <span className={s.commonError}>
-                {error}
-            </span>}
+            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl && createField('Input text of captcha', 'captcha', Input, [required], '')}
+            {error && <span className={s.commonError}>{error}</span>}
         </form>
     )
 }
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);
 
-const Login = ({login, isAuth}) => {
+const Login = ({login, isAuth, captchaUrl}) => {
     const onSubmit = (formData) => {
-        login(formData.login, formData.password, formData.rememberMe);
+        login(formData.login, formData.password, formData.rememberMe, formData.captcha);
     }
 
     if (isAuth) {
@@ -45,14 +45,16 @@ const Login = ({login, isAuth}) => {
     return (
         <div>
             <h1>LOGIN</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit}
+                            captchaUrl={captchaUrl}/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 
