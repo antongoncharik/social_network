@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Users.module.css';
 import anonymousAvatar from '../../common/resource/img/anonymous_avatar.jpg';
 import {NavLink} from 'react-router-dom';
+import styleButton from "../../common/css/Button.module.css";
 
 const User = ({users, followUnfollowUser, subscribedUsers}) => {
     return (
@@ -19,12 +20,16 @@ const User = ({users, followUnfollowUser, subscribedUsers}) => {
                 <div>{'user.location.country'}</div>
                 <div>{'user.location.city'}</div>
                 <div>{user.followed
-                    ? <button disabled={subscribedUsers.some(id => id === user.id)} onClick={() => {
-                        followUnfollowUser(user.id, false);
-                    }}>Unfollow</button>
-                    : <button disabled={subscribedUsers.some(id => id === user.id)} onClick={() => {
-                        followUnfollowUser(user.id, true);
-                    }}>Follow</button>}
+                    ? <button className={styleButton.button}
+                              disabled={subscribedUsers.some(id => id === user.id)}
+                              onClick={() => {
+                                  followUnfollowUser(user.id, false);
+                              }}>Unfollow</button>
+                    : <button className={styleButton.button}
+                              disabled={subscribedUsers.some(id => id === user.id)}
+                              onClick={() => {
+                                  followUnfollowUser(user.id, true);
+                              }}>Follow</button>}
                 </div>
             </div>)
     )

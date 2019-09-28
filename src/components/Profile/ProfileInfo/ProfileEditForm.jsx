@@ -3,6 +3,7 @@ import {reduxForm} from 'redux-form';
 import {createField, Input, Textarea} from "../../../common/FormsControls/FormsControls";
 import s from "./ProfileInfo.module.css";
 import st from "./../../../common/FormsControls/FormsControls.module.css";
+import styleButton from './../../../common/css/Button.module.css';
 
 const ProfileEditForm = ({handleSubmit, userProfile, error}) => {
     return (
@@ -21,7 +22,7 @@ const ProfileEditForm = ({handleSubmit, userProfile, error}) => {
                                     titelContact={key}/>
                 })}</div>
             </div>
-            <button>save</button>
+            <button className={styleButton.button}>save</button>
         </form>
     )
 }

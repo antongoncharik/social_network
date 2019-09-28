@@ -5,6 +5,7 @@ import ProfileStatusWithHook from "./ProfileIStatusWithHook";
 import anonymousAvatar from '../../../common/resource/img/anonymous_avatar.jpg';
 import logoBackground from '../../../common/resource/img/logo_background.jpg';
 import ProfileEditFormRedux from "./ProfileEditForm";
+import styleButton from './../../../common/css/Button.module.css';
 
 const ProfileInfo = (props) => {
     if (!props.userProfile) {
@@ -33,15 +34,17 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.profileInfoBlock}>
                 <ProfileLeftBlock userProfile={props.userProfile}
-                                  isOwner={props.isOwner}
                                   status={props.status}
                                   updateStatus={props.updateStatus}
                                   choosePhoto={choosePhoto}
-                                  toggleEditMode={toggleEditMode}/>
+                                  toggleEditMode={toggleEditMode}
+                                  isOwner={props.isOwner}/>
                 {props.isEditMode && <ProfileEditFormRedux onSubmit={onSubmit}
                                                            userProfile={props.userProfile}
                                                            initialValues={props.userProfile}/> ||
-                <ProfileRightBlock userProfile={props.userProfile}/>}
+                <ProfileRightBlock userProfile={props.userProfile}
+                                   isOwner={props.isOwner}
+                                   toggleEditMode={toggleEditMode}/>}
 
             </div>
         </div>)
@@ -55,8 +58,8 @@ const ProfileLeftBlock = (props) => {
             <div className={s.avaBlock}>
                 <img src={props.userProfile.photos.large || anonymousAvatar}></img>
             </div>
-            <div>{props.isOwner && <input type="file" onChange={props.choosePhoto} className={s.btn}/>}</div>
-            {props.isOwner && <button onClick={() => props.toggleEditMode(true)}>edit profile</button>}
+            <div className={styleButton.button}>{props.isOwner &&
+            <input type="file" onChange={props.choosePhoto} className={s.btn}/>}</div>
         </div>
     )
 }
@@ -78,6 +81,8 @@ const ProfileRightBlock = (props) => {
                                     valueContact={props.userProfile.contacts[key]}/>
                 })}</div>
             </div>
+            {props.isOwner &&
+            <button className={styleButton.button} onClick={() => props.toggleEditMode(true)}>edit profile</button>}
         </div>
     )
 }

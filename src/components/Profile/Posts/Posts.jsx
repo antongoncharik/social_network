@@ -4,6 +4,7 @@ import Post from './Post/Post';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../common/Validators/validators";
 import {Textarea} from "../../../common/FormsControls/FormsControls";
+import styleButton from "../../../common/css/Button.module.css";
 
 const maxLength300 = maxLengthCreator(300);
 
@@ -16,7 +17,7 @@ const PostsForm = (props) => {
                        validate={[maxLength300]}></Field>
             </div>
             <div>
-                <button>Add post</button>
+                <button className={styleButton.button}>Add post</button>
             </div>
         </form>
     )

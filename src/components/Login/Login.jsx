@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth_reducer";
 import s from './Login.module.css';
 import {Redirect} from "react-router-dom";
+import styleButton from "../../common/css/Button.module.css";
 
 const maxLength30 = maxLengthCreator(30);
 const maxLength16 = maxLengthCreator(16);
@@ -22,7 +23,7 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
             {createField(null, 'rememberMe', Input,
                 null, 'remember me', {type: 'checkbox'})}
             <div>
-                <button>Login</button>
+                <button className={styleButton.button}>Login</button>
             </div>
             {captchaUrl && <img src={captchaUrl}/>}
             {captchaUrl && createField('Input text of captcha', 'captcha', Input, [required], '')}

@@ -142,14 +142,19 @@ export const getUsers = (currentPage, pageSize, firstSetUsers) => {
 }
 export const followUnfollowUser = (userId, isFollowUser) => {
     return async (dispatch) => {
-        dispatch(subscribeUsers(true, userId));
-        let response = await usersAPI.unfollowUser(userId);
-        dispatch(subscribeUsers(false, userId));
+        let response = '';
+        if (isFollowUser) {
+            response = await usersAPI.followUser(userId);
+        } else {
+            response = await usersAPI.unfollowUser(userId);
+        }
         if (response.data.resultCode === 0) {
             if (isFollowUser) {
                 dispatch(follow(userId));
+                dispatch(subscribeUsers(true, userId));
             } else {
                 dispatch(unfollow(userId));
+                dispatch(subscribeUsers(false, userId));
             }
         }
     }

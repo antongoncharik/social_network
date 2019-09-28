@@ -5,6 +5,7 @@ import Message from './Message/Message';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator} from "../../common/Validators/validators";
 import {Textarea} from "../../common/FormsControls/FormsControls";
+import styleButton from "../../common/css/Button.module.css";
 
 const maxLength300 = maxLengthCreator(300);
 
@@ -15,7 +16,7 @@ const DialogsForm = ({handleSubmit}) => {
                 <Field name={'newTextDialog'}
                        component={Textarea}
                        validate={[maxLength300]}></Field>
-                <button>Send</button>
+                <button className={styleButton.button}>Send</button>
             </div>
         </form>
     )
