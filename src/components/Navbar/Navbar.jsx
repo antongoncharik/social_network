@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
-import Friends from './Friends/Friends';
 
 const NavbarPanel = (props) => {
     return (
@@ -22,10 +21,10 @@ const NavbarPanel = (props) => {
                 <NavLink to='/find_users' activeClassName={s.activeLinkBlock}>Find users</NavLink>
             </div>
             <div className={s.navLinkBlock}>
-                <NavLink to='/settings' activeClassName={s.activeLinkBlock}>Settings</NavLink>
+                <NavLink to='/friends' activeClassName={s.activeLinkBlock}>Friends</NavLink>
             </div>
-            <div>
-                <Friends friends={props.sidebar.friends}/>
+            <div className={s.navLinkBlock}>
+                <NavLink to='/settings' activeClassName={s.activeLinkBlock}>Settings</NavLink>
             </div>
         </nav>)
 }

@@ -29,7 +29,7 @@ class App extends React.Component {
         return (
             <div className='app-wrapper'>
                 <HeaderContainer/>
-                <NavbarPanel sidebar={this.props.sidebarPage}/>
+                <NavbarPanel/>
                 <div className='app-wrapper-content'>
                     <Switch>
                         <Route exact path='/' render={() => <Redirect to={'/profile'}/>}/>
@@ -38,6 +38,7 @@ class App extends React.Component {
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/music' render={withSuspense(Music)}/>
                         <Route path='/find_users' render={() => <UsersContainer/>}/>
+                        <Route path='/friends' render={() => <News/>}/>
                         <Route path='/settings' render={withSuspense(Settings)}/>
                         <Route path='/login' render={() => <Login/>}/>
                     </Switch>
@@ -49,9 +50,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        initialized: state.app.initialized,
-        sidebarPage: state.sidebarPage
-    }
+        initialized: state.app.initialized}
 }
 
 const AppContainer = compose(
