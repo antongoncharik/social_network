@@ -29,3 +29,7 @@ export const getIsFetchingDataOfState = (state) => {
 export const getSubscribedUsersOfState = (state) => {
     return state.usersPage.subscribedUsers;
 }
+
+export const getFriends = (state) => {
+    return state.usersPage.users.filter(user => user.followed);
+}
