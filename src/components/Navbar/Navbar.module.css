@@ -1,8 +1,8 @@
 .navBlock {
     grid-area: n;
     background-color: #06c7aa;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 .navLinkBlock a {

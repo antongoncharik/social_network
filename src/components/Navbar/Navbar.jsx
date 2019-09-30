@@ -21,9 +21,6 @@ const NavbarPanel = (props) => {
                 <NavLink to='/find_users' activeClassName={s.activeLinkBlock}>Find users</NavLink>
             </div>
             <div className={s.navLinkBlock}>
-                <NavLink to='/friends' activeClassName={s.activeLinkBlock}>Friends</NavLink>
-            </div>
-            <div className={s.navLinkBlock}>
                 <NavLink to='/settings' activeClassName={s.activeLinkBlock}>Settings</NavLink>
             </div>
         </nav>)

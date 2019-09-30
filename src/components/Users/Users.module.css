@@ -1,6 +1,17 @@
+.commonBlockUsers {
+    background-color: #d5f5ed;
+    border-radius: 15px;
+    padding: 10px;
+}
+
 .userBlock {
-    padding-left: 15px;
     font-weight: bold;
+    max-width: 150px;
+}
+
+.userBlockItem {
+    text-align: center;
+    padding: 10px;
 }
 
 .avatarBlock img {

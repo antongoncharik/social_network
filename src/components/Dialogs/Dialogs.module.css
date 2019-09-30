@@ -1,6 +1,9 @@
 .dialogsMessagesBlock {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    background-color: #d5f5ed;
+    border-radius: 15px;
+    padding: 10px;
 }
 
 .dialogsBlock {

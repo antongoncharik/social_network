@@ -9,25 +9,27 @@ const User = ({users, followUnfollowUser, subscribedUsers}) => {
         users.map(user =>
             <div key={user.id}
                  className={s.userBlock}>
-                <div>{user.name}</div>
-                <div>{user.status}</div>
-                <div className={s.avatarBlock}>
-                    <NavLink to={'/profile/' + user.id}>
-                        <img src={user.photos.small === null
-                            ? anonymousAvatar
-                            : user.photos.small}></img></NavLink>
-                </div>
-                <div>{user.followed
-                    ? <button className={styleButton.button}
-                              disabled={subscribedUsers.some(id => id === user.id)}
-                              onClick={() => {
-                                  followUnfollowUser(user.id, false);
-                              }}>Unfollow</button>
-                    : <button className={styleButton.button}
-                              disabled={subscribedUsers.some(id => id === user.id)}
-                              onClick={() => {
-                                  followUnfollowUser(user.id, true);
-                              }}>Follow</button>}
+                <div className={s.userBlockItem}>
+                    <div>{user.name}</div>
+                    <div>{user.status}</div>
+                    <div className={s.avatarBlock}>
+                        <NavLink to={'/profile/' + user.id}>
+                            <img src={user.photos.small === null
+                                ? anonymousAvatar
+                                : user.photos.small}></img></NavLink>
+                    </div>
+                    <div>{user.followed
+                        ? <button className={styleButton.button}
+                                  disabled={subscribedUsers.some(id => id === user.id)}
+                                  onClick={() => {
+                                      followUnfollowUser(user.id, false);
+                                  }}>Unfollow</button>
+                        : <button className={styleButton.button}
+                                  disabled={subscribedUsers.some(id => id === user.id)}
+                                  onClick={() => {
+                                      followUnfollowUser(user.id, true);
+                                  }}>Follow</button>}
+                    </div>
                 </div>
             </div>)
     )

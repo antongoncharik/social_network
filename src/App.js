@@ -14,7 +14,6 @@ import NavbarPanel from "./components/Navbar/Navbar";
 import {compose} from "redux";
 import {store} from "./redux/redux_store";
 import {withSuspense} from "./common/hoc/withSuspense";
-import FriendsContainer from "./components/Friends/FriendsContainer";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const Settings = React.lazy(() => import('./components/Settings/Settings'));
@@ -39,7 +38,6 @@ class App extends React.Component {
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/music' render={withSuspense(Music)}/>
                         <Route path='/find_users' render={() => <UsersContainer/>}/>
-                        <Route path='/friends' render={() => <FriendsContainer/>}/>
                         <Route path='/settings' render={withSuspense(Settings)}/>
                         <Route path='/login' render={() => <Login/>}/>
                     </Switch>

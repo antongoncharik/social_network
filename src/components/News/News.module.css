@@ -1,3 +1,5 @@
 .newsBlock {
-    background: #d5f5ed;
+    background-color: #d5f5ed;
+    border-radius: 15px;
+    padding: 10px;
 }
